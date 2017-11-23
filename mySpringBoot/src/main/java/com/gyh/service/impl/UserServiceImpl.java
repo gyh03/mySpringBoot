@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,7 +21,6 @@ public class UserServiceImpl implements  UserService {
 
     @Override
     public List<User> getUsersByName(String name) throws Exception {
-        System.out.println(name+"<<<<<<<<<<<<<,");
         return userMapper.getUsersByName(name);
     }
 

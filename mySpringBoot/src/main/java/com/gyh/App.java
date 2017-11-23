@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * start the Sprinauthor gyh
+ * start the Spring
+ * @author gyh
  */
 @SpringBootApplication
 //@ComponentScan("com.gyh.*")

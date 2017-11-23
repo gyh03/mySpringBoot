@@ -1,8 +1,10 @@
 package com.gyh.controller;
 
+import com.gyh.aspect.OpeLogInfo;
 import com.gyh.bean.User;
 import com.gyh.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,10 +51,12 @@ public class UserController {
      * @param user
      * @return
      */
+    @OpeLogInfo(node = "新建用户")
     @RequestMapping(value = "user",method = RequestMethod.POST)
     public Object saveUser(User user){
         Map<String,Object> res =new HashMap<>();
         try {
+
             if(user == null){
                 res.put("msg","binding error");
                 return  res;
@@ -61,7 +65,6 @@ public class UserController {
                 res.put("msg","name can not be null");
                 return  res;
             }
-            user.setCreatetime(new Date());
             userService.saveUser(user);
             res.put("data",user);
         } catch (Exception e) {

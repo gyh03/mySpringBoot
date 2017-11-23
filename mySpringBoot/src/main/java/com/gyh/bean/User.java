@@ -1,11 +1,15 @@
 package com.gyh.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class User {
     private Long id;
     private String name;
-    private Date createtime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
 
     public Long getId() {
         return id;
@@ -23,11 +27,11 @@ public class User {
         this.name = name;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

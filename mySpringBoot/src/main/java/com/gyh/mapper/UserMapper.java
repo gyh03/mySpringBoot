@@ -15,11 +15,11 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT id,username name,createtime from t_user  WHERE  username = #{name}")
+    @Select("SELECT id,username name,birthday from t_user  WHERE  username = #{name}")
     public List<User> getUsersByName(String name) throws Exception;
 
 
-    @Insert("insert into t_user(username,createtime) values (#{name},#{createtime})")
+    @Insert("insert into t_user(username,birthday) values (#{name},#{birthday})")
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     public void saveUser(User user) throws Exception;
 }
