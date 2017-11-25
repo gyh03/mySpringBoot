@@ -30,19 +30,14 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "user",method = RequestMethod.GET)
-    public Object getUsersByName(String name){
+    public Object getUsersByName(String name) throws Exception {
         Map<String,Object> res =new HashMap<>();
-        try {
-            if(name == null){
-                res.put("msg","name can not be null");
-                return  res;
-            }
-            List<User> list = userService.getUsersByName(name);
-            res.put("data",list);
-        } catch (Exception e) {
-            e.printStackTrace();
-            res.put("msg","error:"+e.getMessage());
+        if(name == null){
+            res.put("msg","name can not be null");
+            return  res;
         }
+        List<User> list = userService.getUsersByName(name);
+        res.put("data",list);
         return res;
     }
 
@@ -53,24 +48,19 @@ public class UserController {
      */
     @OpeLogInfo(node = "新建用户")
     @RequestMapping(value = "user",method = RequestMethod.POST)
-    public Object saveUser(User user){
+    public Object saveUser(User user) throws Exception {
         Map<String,Object> res =new HashMap<>();
-        try {
-
-            if(user == null){
-                res.put("msg","binding error");
-                return  res;
-            }
-            if(user.getName() == null){
-                res.put("msg","name can not be null");
-                return  res;
-            }
-            userService.saveUser(user);
-            res.put("data",user);
-        } catch (Exception e) {
-            e.printStackTrace();
-            res.put("msg","error:"+e.getMessage());
+        if(user == null){
+            res.put("msg","binding error");
+            return  res;
         }
+        if(user.getName() == null){
+            res.put("msg","name can not be null");
+            return  res;
+        }
+        userService.saveUser(user);
+        res.put("data",user);
+
         return res;
     }
 }
