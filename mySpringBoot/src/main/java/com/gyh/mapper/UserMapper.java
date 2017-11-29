@@ -15,7 +15,11 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT id,username name,birthday from t_user  WHERE  username = #{name}")
+    @Select("SELECT id,username name,birthday from t_user  WHERE  username = #{id}")
+    public User getUserById(Long id) throws Exception;
+
+    //@Select("SELECT id,username name,birthday from t_user  WHERE  username = #{name}")
+    //使用xml 定义sql
     public List<User> getUsersByName(String name) throws Exception;
 
 
