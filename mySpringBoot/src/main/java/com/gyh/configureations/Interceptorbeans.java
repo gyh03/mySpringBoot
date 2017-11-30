@@ -1,6 +1,6 @@
 package com.gyh.configureations;
 
-import com.gyh.interceptor.LoginInterceptor;
+import com.gyh.common.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
