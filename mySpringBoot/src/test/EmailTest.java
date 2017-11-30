@@ -21,8 +21,8 @@ public class EmailTest {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(formUser);//发送者.
         message.setTo("1041954045@qq.com");//接收者.
-        message.setSubject("this邮件（邮件主题）");//邮件主题.
-        message.setText("这是邮件内容");//邮件内容.
+        message.setSubject("这是我给你的邮件");//邮件主题.
+        message.setText(" 哈哈哈哈哈");//邮件内容.
         javaMailSender.send(message);//发送邮件
     }
 }
