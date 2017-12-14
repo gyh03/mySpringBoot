@@ -1,6 +1,6 @@
 # mySpringBoot
 SpringBoot demo
-
+实现的功能有：
 <br>
 bean绑定，日期格式式化<br>
 responsebody，json默认使用Jackson。日期格式化<br>
