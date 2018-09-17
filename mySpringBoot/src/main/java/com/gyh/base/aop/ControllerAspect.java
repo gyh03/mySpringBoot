@@ -33,7 +33,7 @@ public class ControllerAspect {
         // 添加MDC数据，用于业务日志使用
         String userIp = IpUtils.getUserIpAddress(request);
         MDC.put("USER_IP", userIp);
-        System.out.println("userIp:" + userIp);
+        System.out.println("aop Before the method; userIp:" + userIp);
     }
 
 

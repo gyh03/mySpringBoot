@@ -11,6 +11,7 @@ public interface TransactionTestService {
     void throwAnExceptionNoTransaction();
 
     void throwAnExceptionWithYouTransaction();
+    void noExceptionWithYouTransaction();
 
     void throwAnExceptionWithNewTransaction();
 }

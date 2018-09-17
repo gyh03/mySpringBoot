@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public List<GyhUser> getUsersByName(String name) {
         return userMapper.getUsersByName(name);
     }

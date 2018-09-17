@@ -28,6 +28,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "user", method = RequestMethod.GET)
+    @OpeLogInfo(node = "查询用户")
     public Object getUsersByName(String name) {
         GyhResult res = new GyhResult();
         if (name == null) {

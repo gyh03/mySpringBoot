@@ -20,6 +20,10 @@ public class TransactionTestServiceImpl implements TransactionTestService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 使用spring容器中的transactionTestService对象调用方法，可以再次进去aop拦截，因为transactionTestService是aop代理之后的对象
+     * 使用this调用或者直接调用方法，使用的是没有代理的原始对象，不会进入aop拦截
+     */
     @Autowired(required = false)
     private TransactionTestService transactionTestService;
 
@@ -61,6 +65,11 @@ public class TransactionTestServiceImpl implements TransactionTestService {
                     System.out.println("i catch a throwAnExceptionWithYouTransaction ...");
                 }
                 break;
+            case 14:
+                // 14.进入另一个service并加入了当前的事务里，没有异常，正常提交，
+                // 使用transactionTestService对象调用，会再次走事务拦截器。
+                transactionTestService.noExceptionWithYouTransaction();
+                break;
             case 5:
                 // 5.进入另一个service开启了一个新事务，旧事务被挂起，不会影响旧事务的状态，
                 // 新事务抛出异常，新事务回滚；异常抛到上一层，旧事务也回滚
@@ -94,6 +103,13 @@ public class TransactionTestServiceImpl implements TransactionTestService {
         GyhUser user = new GyhUser("throwAnExceptionWithYouTransaction");
         userMapper.saveUser(user);
         throw new GyhException();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void noExceptionWithYouTransaction() {
+        GyhUser user = new GyhUser("noExceptionWithYouTransaction");
+        userMapper.saveUser(user);
     }
 
     @Override
