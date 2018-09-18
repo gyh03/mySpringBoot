@@ -1,6 +1,7 @@
 package com.gyh.base.spring.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.gyh.base.GyhConstant;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author guoyanhong
@@ -22,6 +25,8 @@ public class DataSourceAndSqlSessionExt {
     private SqlSessionTemplate sqlSessionTemplate;
     @Autowired
     private DataSourceTransactionManager dataSourceTransactionManager;
+    @Autowired
+    private DataSource mainDataSource;
 
     /**
      * 重新定义一个 DataSource，并修改 dataSourceTransactionManager 和 SqlSession 里的dataSource对象，
@@ -33,11 +38,11 @@ public class DataSourceAndSqlSessionExt {
      *
      * @throws Exception
      */
-//    @PostConstruct
-    public void afterPropertiesSet() throws Exception {
+    @PostConstruct
+    public void resetDataSource() throws Exception {
         DataSource newDataSource = getDataSource();
         // 重写 dataSourceTransactionManager 的 dataSource
-//        dataSourceTransactionManager.setDataSource(newDataSource);
+        dataSourceTransactionManager.setDataSource(newDataSource);
         // 重写 sqlSession  的 dataSource
         Configuration configuration = sqlSessionTemplate.getConfiguration();
         Environment environment = configuration.getEnvironment();
@@ -47,13 +52,25 @@ public class DataSourceAndSqlSessionExt {
         // configuration.addInterceptor(interceptor);
     }
 
-    public DataSource getDataSource() {
+    /**
+     * 获取动态数据源
+     * @return
+     */
+    public DynamicDataSource getDataSource() {
+        DynamicDataSource dynamicDataSource = new DynamicDataSource();
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put(GyhConstant.MAIN_DB_ID,mainDataSource);
+        // TODO 其他数据库连接信息，可以动态从主库某张表中获取，待完善数据库配置信息（连接池信息等）
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl("jdbc:mysql://localhost:3306/sys?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useSSL=true");
         datasource.setDriverClassName("com.mysql.jdbc.Driver");
         datasource.setUsername("root");
         datasource.setPassword("root");
-        return datasource;
+        targetDataSources.put("sys",datasource);
+        dynamicDataSource.setTargetDataSources(targetDataSources);
+        dynamicDataSource.setDefaultTargetDataSource(mainDataSource);
+        dynamicDataSource.afterPropertiesSet();
+        return dynamicDataSource;
     }
 
 }
