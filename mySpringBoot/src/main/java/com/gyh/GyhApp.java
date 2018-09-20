@@ -12,10 +12,11 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @SpringBootApplication 启动springboot
  * @ServletComponentScan Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码
  * filter > interceptor > aop
+ *
+ * //@ComponentScan("com.gyh.*")
+ * //@MapperScan("com.gyh.*")
  */
 @SpringBootApplication
-//@ComponentScan("com.gyh.*")
-//@MapperScan("com.gyh.*")
 @ServletComponentScan
 public class GyhApp {
     public static void main(String[] args) {

@@ -30,8 +30,7 @@ public class DataSourceAndSqlSessionExt {
 
     /**
      * 重新定义一个 DataSource，并修改 dataSourceTransactionManager 和 SqlSession 里的dataSource对象，
-     * 实验表明，保存数据时使用的DataSource为 SqlSession 里的dataSource，
-     * 无论 dataSourceTransactionManager 的DataSource 改变与否，sql操作的数据库为 SqlSession 里的数据库连接;
+     * 实验表明，保存数据时使用的DataSource为 SqlSession 里的dataSource，无论 dataSourceTransactionManager 的DataSource 改变与否，sql操作的数据库为 SqlSession 里的数据库连接;
      * 并且 dataSourceTransactionManager 和 SqlSession 的DataSource不一致时，dataSourceTransactionManager 管理的事务将不能使 SqlSession 里的 sql 回滚，
      * 所以现实代码中不要将这两处的DataSource设置成不一致，避免造成错误和混乱
      * 另：多数据源时，需要重写这两个地方的数据源，因为多数据源可能需要从主数据库中查询其他数据源连接信息，再定义成多数据源

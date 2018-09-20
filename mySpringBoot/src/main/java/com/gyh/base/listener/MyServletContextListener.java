@@ -7,7 +7,8 @@ import javax.servlet.annotation.WebListener;
 /**
  * 使用@WebListener注解，实现ServletContextListener接口
  * 监听Servlet 容器的创建与销毁
- * @author gyh
+ * @author guoyanhong
+ * @date 2018/9/19 18:21
  */
 @WebListener
 public class MyServletContextListener implements ServletContextListener {
