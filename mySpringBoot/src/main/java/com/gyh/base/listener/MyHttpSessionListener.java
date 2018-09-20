@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSessionListener;
  *
  * @author gyh
  */
-@WebListener
+//@WebListener
 public class MyHttpSessionListener implements HttpSessionListener {
 
     @Override
