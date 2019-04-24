@@ -12,12 +12,12 @@ controller统一异常处理<br>
 log4j打印sql语句<br>
 发送邮件<br>
 使用注解配置filter和linstener<br>
-filter、linstener和interceptor的执行顺序>
-listener for ServletContext init>
-filter init>
-filter pre doFilter... 此处可以做 过滤敏感词、设置字符编码、url级别权限访问等控制>
-interceptor ： preHandle ... 可以在此处验证是否登录>
-目标方法>
-interceptor ： postHandle...>
+filter、linstener和interceptor的执行顺序><br>
+listener for ServletContext init><br>
+filter init><br>
+filter pre doFilter... 此处可以做 过滤敏感词、设置字符编码、url级别权限访问等控制><br>
+interceptor ： preHandle ... 可以在此处验证是否登录><br>
+目标方法><br>
+interceptor ： postHandle...><br>
 interceptor ： afterCompletion...
 
