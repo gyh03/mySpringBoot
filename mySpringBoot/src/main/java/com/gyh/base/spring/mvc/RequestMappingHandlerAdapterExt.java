@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -34,6 +37,10 @@ public class RequestMappingHandlerAdapterExt implements InitializingBean {
 
     @Autowired
     private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
+
+    @Autowired
+    private MessageSource messageSource;
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -72,6 +79,10 @@ public class RequestMappingHandlerAdapterExt implements InitializingBean {
         public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest)
                 throws IOException, HttpMediaTypeNotAcceptableException, HttpMessageNotWritableException {
             System.out.println("自定义ResponseBody处理器，在此处可以针对ResponseBody进行再封装...");
+            // 比如此处处理国际化
+            String code = "demoMsg";
+            String localeValue = messageSource.getMessage(code,null, LocaleContextHolder.getLocale());
+            System.out.println("国际化：" + code + " = " + localeValue);
             super.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
         }
     }

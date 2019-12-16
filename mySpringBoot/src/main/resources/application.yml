@@ -18,6 +18,9 @@ spring:
     port: 25
     username: gyh_03@126.com
     password: gyh18600749749
+  messages: # 国际化配置
+    encoding: UTF-8
+    basename: i18n/message
 
 server:
   port: 8088
