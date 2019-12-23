@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,8 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+@Slf4j
 public class JacksonUtils {
-	private static Logger logger = Logger.getLogger(JacksonUtils.class);
 
  
 	 private static ObjectMapper getMapper() {
@@ -50,13 +50,13 @@ public class JacksonUtils {
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		}
 		return null;
     }
@@ -71,7 +71,7 @@ public class JacksonUtils {
 			return  getMapper().writeValueAsString(object);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		}
 		return null;
 	}
@@ -86,7 +86,7 @@ public class JacksonUtils {
 			return  getMapper(ignoreNull).writeValueAsString(object);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		}
 		return null;
 	}
@@ -106,15 +106,15 @@ public class JacksonUtils {
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.info(e.getMessage());
+			log.info(e.getMessage());
 		}
         return null;
     }  
