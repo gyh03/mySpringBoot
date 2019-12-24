@@ -1,7 +1,7 @@
 package com.gyh.base.aop;
 
 import com.gyh.utils.IpUtils;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 
 @Component
 @Aspect
+@Slf4j
 public class ControllerAspect {
-    private static Logger log = Logger.getLogger(ControllerAspect.class);
 
     /**
      * 配置切入点,拦截使用@OpeLogInfo注解的，记录日志

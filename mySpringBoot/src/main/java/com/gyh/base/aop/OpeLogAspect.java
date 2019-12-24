@@ -2,7 +2,7 @@ package com.gyh.base.aop;
 
 import com.gyh.utils.IpUtils;
 import com.gyh.utils.JacksonUtils;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -23,8 +23,8 @@ import java.util.stream.Stream;
 
 @Component
 @Aspect
+@Slf4j
 public class OpeLogAspect {
-    private static Logger log = Logger.getLogger(OpeLogAspect.class);
 
     /**
      * 配置切入点,拦截使用@OpeLogInfo注解的，记录日志

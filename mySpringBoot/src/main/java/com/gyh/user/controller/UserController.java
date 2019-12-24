@@ -29,16 +29,17 @@ public class UserController {
      */
     @RequestMapping(value = "user", method = RequestMethod.GET)
     @OpeLogInfo(node = "查询用户")
-    public Object getUsersByName(String name) {
-        GyhResult res = new GyhResult();
-        if (name == null) {
-            res.setSuccess(false);
-            res.setMsg("name can not be null");
-            return res;
-        }
-        List<GyhUser> list = userService.getUsersByName(name);
-        res.setData(list);
-        return res;
+    public Object getUsersByName(String name) throws Exception {
+        throw new Exception("demoMsg");
+//        GyhResult res = new GyhResult();
+//        if (name == null) {
+//            res.setSuccess(false);
+//            res.setMsg("name can not be null");
+//            return res;
+//        }
+//        List<GyhUser> list = userService.getUsersByName(name);
+//        res.setData(list);
+//        return res;
     }
 
     /**
