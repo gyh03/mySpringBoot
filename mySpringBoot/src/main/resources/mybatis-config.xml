@@ -26,7 +26,7 @@
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
         
-        <!-- 配置log实现方式， -->
-		<!--<setting name="logImpl" value="LOG4J" />-->
+        <!-- 配置log实现方式，SqlSessionFactoryBean 创建时会自动将其使用的log实现适配到 mybatis 的 LogFactory 中；然后此配置会覆盖原先的配置（此处配置的value实现必须存在/已引入，否则会报错） -->
+		<setting name="logImpl" value="Slf4j" />
     </settings>
 </configuration>
