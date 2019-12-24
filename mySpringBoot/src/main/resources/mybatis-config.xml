@@ -26,7 +26,7 @@
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
         
-        <!-- 打印查询语句 -->
-		<setting name="logImpl" value="LOG4J" />
+        <!-- 配置log实现方式 -->
+		<!--<setting name="logImpl" value="LOG4J" />-->
     </settings>
 </configuration>
