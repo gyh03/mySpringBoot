@@ -18,6 +18,9 @@ spring:
     port: 25
     username: gyh_03@126.com
     password: gyh18600749749
+  profiles:
+    active: dev
+    include: xxx-${spring.profiles.active:worry}
 
 server:
   port: 8088
