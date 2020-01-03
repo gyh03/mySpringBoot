@@ -21,6 +21,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 public class GyhApp {
     public static void main(String[] args) {
         SpringApplication.run(GyhApp.class, args);
+        int a=0;
         System.out.println("【【【【【【 start success ...】】】】】】");
     }
 }

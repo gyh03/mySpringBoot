@@ -1,4 +1,4 @@
-package com.gyh.base.spring.mvc;
+package com.gyh.base.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * spring 容器 工具类
+ * spring 容器 工具类，使用此类获取容器中的 Bean
  *
  * @author guoyanhong
  * @date 2018/9/18 11:32

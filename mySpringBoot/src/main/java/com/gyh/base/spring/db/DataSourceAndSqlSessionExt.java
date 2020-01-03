@@ -15,10 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 注入一个动态数据源
  * @author guoyanhong
  * @date 2018/9/17 16:32
  */
-@Component
+//@Component
 public class DataSourceAndSqlSessionExt {
 
     @Autowired

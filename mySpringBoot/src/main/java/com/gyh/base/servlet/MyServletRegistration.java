@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author guoyanhong
  * @date 2018/10/31 18:00
  */
-@Configuration
+//@Configuration
 public class MyServletRegistration {
 
     @Bean
