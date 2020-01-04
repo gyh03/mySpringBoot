@@ -1,22 +1,21 @@
 package com.gyh.base.spring.mvc;
 
 import com.gyh.base.interceptor.LoginInterceptor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 扩展 WebMvc 容器
- *
+ * <p>
  * 添加 自定义插件 或 非默认容器插件，如：
  * ArgumentResolver
  * HandlerMethodReturnValueHandler
@@ -52,19 +51,13 @@ public class WebMvcConfigurationSupportExt extends WebMvcConfigurationSupport {
      */
     @Override
     public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
-        // 消息转换器，在此处可以对转换器进行自定义配置
-        List<HttpMessageConverter<?>> httpMessageConverters = getMessageConverters();
-        // 添加自定义 responseBody 处理器，并放在第一位
-        ResponseBodyReturnValueHandlerExt processorExt = new ResponseBodyReturnValueHandlerExt(httpMessageConverters);
-        List<HandlerMethodReturnValueHandler> handlerMethodReturnValueHandlers = getReturnValueHandlers();
-        List<HandlerMethodReturnValueHandler> newReturnValueHandlers = new ArrayList<>(handlerMethodReturnValueHandlers.size() + 1);
-        newReturnValueHandlers.add(processorExt);
-        newReturnValueHandlers.addAll(handlerMethodReturnValueHandlers);
-        super.addReturnValueHandlers(newReturnValueHandlers);
+        // 添加自定义 responseBody 处理器
+//        returnValueHandlers.add(new ResponseBodyReturnValueHandlerExt(getMessageConverters()));
     }
 
     /**
      * 添加 Converter
+     *
      * @param registry
      */
     @Override
@@ -72,4 +65,5 @@ public class WebMvcConfigurationSupportExt extends WebMvcConfigurationSupport {
         registry.addConverter(new StringToLocalDateConverter());
         super.addFormatters(registry);
     }
+
 }

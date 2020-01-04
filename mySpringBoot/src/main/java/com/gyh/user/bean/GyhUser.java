@@ -5,16 +5,22 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 public class GyhUser {
+    @NotNull
     private Long id;
+
+    @NotEmpty
     private String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
+
     @NumberFormat(pattern = "###,###.##")
     private Number money;
 
