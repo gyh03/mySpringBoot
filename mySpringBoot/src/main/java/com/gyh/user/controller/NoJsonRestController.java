@@ -12,7 +12,7 @@ import java.io.IOException;
  * @date 2018/9/12 14:31
  */
 @Controller
-public class NoJsonResController {
+public class NoJsonRestController {
 
     private String redirctUrl = "https://baidu.com";
 
@@ -34,6 +34,11 @@ public class NoJsonResController {
     @RequestMapping("goOtherPage2")
     public void goOtherPage2(HttpServletResponse response) throws IOException {
         response.sendRedirect(redirctUrl);
+    }
+
+    @RequestMapping("forwardPage")
+    public String forwardPage() throws IOException {
+        return "forward:throwAnException";
     }
     @RequestMapping("throwAnException")
     public void throwAnException(){

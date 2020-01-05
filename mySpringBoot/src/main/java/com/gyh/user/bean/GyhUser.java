@@ -18,7 +18,7 @@ public class GyhUser {
     @NotEmpty
     private String name;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date birthday;
 
     @NumberFormat(pattern = "###,###.##")

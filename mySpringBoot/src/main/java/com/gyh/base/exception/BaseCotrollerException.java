@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.BindException;
 
 /**
  * @author gyh
@@ -30,7 +31,7 @@ public class BaseCotrollerException {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Object CustomExceptionMes(HttpServletRequest request, Exception ex) {
+    public Object customException(HttpServletRequest request, Exception ex) {
         GyhResult result = null;
         if (ex instanceof NoPrintException) {
             result = new GyhResult(false, ((NoPrintException) ex).getCode(), ex.getMessage(), null);
@@ -45,4 +46,8 @@ public class BaseCotrollerException {
         return result;
     }
 
+    @ExceptionHandler(BindException.class)
+    public Object customException(){
+        return "redirect:https://www.baidu.com/";
+    }
 }

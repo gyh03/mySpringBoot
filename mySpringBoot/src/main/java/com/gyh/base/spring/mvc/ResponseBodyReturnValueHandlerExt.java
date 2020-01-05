@@ -36,8 +36,8 @@ public class ResponseBodyReturnValueHandlerExt extends RequestResponseBodyMethod
         System.out.println("自定义ResponseBody处理器，在此处可以针对ResponseBody进行再封装...");
         // 比如此处处理国际化
         String code = "demoMsg";
-        String localeValue = messageSource.getMessage(code, null, LocaleContextHolder.getLocale());
-        System.out.println("国际化：" + code + " = " + localeValue);
+//        String localeValue = messageSource.getMessage(code, null, LocaleContextHolder.getLocale());
+//        System.out.println("国际化：" + code + " = " + localeValue);
         super.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
     }
 }
