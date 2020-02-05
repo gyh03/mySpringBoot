@@ -78,7 +78,7 @@ public class WebMvcConfigurerExt implements WebMvcConfigurer {
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StringToLocalDateConverter());
+//        registry.addConverter(new StringToLocalDateConverter());
     }
 
 }

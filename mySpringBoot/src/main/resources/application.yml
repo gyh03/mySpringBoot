@@ -24,17 +24,24 @@ spring:
   messages: # 国际化配置
     encoding: UTF-8
     basename: i18n/message
+#  boot: # 指定使用的springbootAdmin地址
+#    admin:
+#      client:
+#        url: http://localhost:8888
+
 
 server:
   port: 8088
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #springboot默认只暴露/health和/info端点。'loggers'可以暴露/logger端点，以实现日志控制。
+
 
 #######################################
 #指定mybatis-config.xml的位置
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*Mapper.xml
-
-
-
-
-

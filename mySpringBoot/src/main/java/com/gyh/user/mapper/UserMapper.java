@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author gyh
  */
-@Mapper
+//@Mapper
 public interface UserMapper {
 
     @Select("SELECT id,username name,birthday from t_user  WHERE  username = #{id}")

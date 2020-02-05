@@ -63,7 +63,7 @@
 	<!--即将 mapper 接口打入 logger 就行。-->
 	<logger name="com.gyh.user.mapper" level="DEBUG"></logger>
 
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="consoleLog"/>
 		<appender-ref ref="fileLog"/>
 		<appender-ref ref="fileErrorLog"/>
