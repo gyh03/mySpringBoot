@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/mymms?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useSSL=true
     username: root
-    password: 123456root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     max-active: 20
     max-idle: 8
@@ -20,7 +20,9 @@ spring:
     password: gyh18600749749
   profiles:
     active: dev
-    include: xxx-${spring.profiles.active:worry}
+    include: @spring.profiles.active@
+#    include: xxx-${spring.profiles.active:worry}
+
   messages: # 国际化配置
     encoding: UTF-8
     basename: i18n/message
