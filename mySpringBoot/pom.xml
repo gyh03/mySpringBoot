@@ -88,6 +88,16 @@
             <scope>true</scope>
         </dependency>-->
 
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.6.Final</version>
+        </dependency>
+
         <!-- apache.commons -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -113,16 +123,43 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- shardingsphere -->
-        <dependency>
+        <!-- shardingsphere 和 druid-spring-boot-starter 不能同时使用-->
+        <!--<dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.0.1</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProfiles>dev</activatedProfiles>
+                <log.level>INFO</log.level>
+            </properties>
+            <activation>
+                <!-- 默认环境 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <activatedProfiles>test</activatedProfiles>
+                <log.level>INFO</log.level>
+            </properties>
+        </profile>
 
+        <profile>
+            <id>prod</id>
+            <properties>
+                <activatedProfiles>prod</activatedProfiles>
+                <log.level>INFO</log.level>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>
