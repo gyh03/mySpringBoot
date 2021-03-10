@@ -23,18 +23,9 @@ public class CustomBean {
     private SameType sameType1;
     @Resource
     private SameType sameType2;
-
+    @Autowired
     private OneClass oneClass;
 
-    /**
-     * Autowired 标注的方法的参数也会被自动依赖
-     *
-     * @param oneBean
-     */
-    @Autowired
-    public void setOneClass(OneClass oneBean, SameType sameType) {
-        this.oneClass = oneBean;
-    }
 
     @ConditionalOnBean
     @Bean

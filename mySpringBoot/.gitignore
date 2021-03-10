@@ -16,3 +16,4 @@ target/
 *.diff
 *.patch
 *.tmp
+*.iml
