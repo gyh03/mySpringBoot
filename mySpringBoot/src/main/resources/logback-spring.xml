@@ -10,8 +10,7 @@
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%-5level) %clr([%thread] [gyh-app] [userip:%X{USER_IP}])
-                %clr(%-40.40logger{39}){cyan} : %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%-5level) %clr([%thread]) %clr(%-40.40logger{39}){cyan} : %msg%n
             </pattern>
         </layout>
     </appender>
@@ -22,9 +21,7 @@
             <fileNamePattern>${user.dir}/logs/log/gyh-app.%d.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [gyh-app] [userip:%X{USER_IP}] %logger{36} -
-                %msg%n
-            </pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -39,8 +36,7 @@
             <fileNamePattern>${user.dir}/logs/error/gyh-app.%d.error</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [gyh-app] [userip:%X{USER_IP}] %logger{36} -
-                %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n
             </pattern>
         </encoder>
     </appender>
