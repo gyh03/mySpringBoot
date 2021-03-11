@@ -1,9 +1,11 @@
 package com.gyh.test;
 
+import com.gyh.user.mapper.UserMapper;
+import com.gyh.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 一个class
@@ -14,6 +16,18 @@ import javax.annotation.Resource;
 @Component
 public class OneClass {
     private SameType sameType;
+    private List<SameType> sameTypes;
+    private UserService userService;
+
+    /**
+     * 如果只有一个构造函数时，参数会默认自动依赖
+     *
+     * @param sameTypes
+     */
+    public OneClass(List<SameType> sameTypes,UserService userService) {
+        this.sameTypes = sameTypes;
+    }
+
 
     /**
      * Autowired 标注的方法的参数也会被自动依赖
@@ -21,7 +35,7 @@ public class OneClass {
      * @param sameType
      */
     @Autowired
-    public void injectOneBean(SameType sameType) {
+    private void injectOneBean(SameType sameType) {
         this.sameType = sameType;
     }
 }

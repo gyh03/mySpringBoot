@@ -23,7 +23,7 @@ public class CustomBean {
     private SameType sameType1;
     @Resource
     private SameType sameType2;
-    @Autowired
+    @Autowired(required = false)
     private OneClass oneClass;
 
 
