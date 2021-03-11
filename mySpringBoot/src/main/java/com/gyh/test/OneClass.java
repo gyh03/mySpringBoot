@@ -20,7 +20,7 @@ public class OneClass {
     private UserService userService;
 
     /**
-     * 如果只有一个构造函数时，参数会默认自动依赖
+     * 如果只有一个构造函数时，即使不使用Autowired 注解，参数会默认自动依赖
      *
      * @param sameTypes
      */
