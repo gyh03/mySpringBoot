@@ -1,0 +1,19 @@
+# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.iml

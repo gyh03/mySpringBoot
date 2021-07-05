@@ -1,4 +1,6 @@
-import com.gyh.App;
+package test;
+
+import com.gyh.GyhApp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner. class)
-@SpringBootTest(classes=App.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = GyhApp.class)
 public class EmailTest {
     @Autowired
     private JavaMailSender javaMailSender;
@@ -17,7 +19,7 @@ public class EmailTest {
     private String formUser;
 
     @Test
-    public void testSend(){
+    public void testSend() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(formUser);//发送者.
         message.setTo("1041954045@qq.com");//接收者.
